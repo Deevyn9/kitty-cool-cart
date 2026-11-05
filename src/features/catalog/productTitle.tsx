@@ -21,7 +21,7 @@ export function ProductTile({ product, onAdd }: Props) {
           alt={product.name}
           draggable={false}
           className="absolute inset-0 m-auto w-4/5 touch-none"
-          onDoubleClick={() => imgRef.current && onAdd(product, imgRef.current)}
+          onClick={() => imgRef.current && onAdd(product, imgRef.current)}
         />
       </div>
       <p className="mt-2 text-[10px] text-neutral-500">{product.name}</p>
