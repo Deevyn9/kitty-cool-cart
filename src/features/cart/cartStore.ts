@@ -1,25 +1,37 @@
 import { create } from 'zustand'
 import type { Product } from '../catalog/products'
 
-export type CartLine = { lineId: string; product: Product }
+export type CartItem = { product: Product; qty: number }
+type LastAdded = { id: string; nonce: number; isNew: boolean }
 
 type CartState = {
-  lines: CartLine[]
+  items: CartItem[]
   isOpen: boolean
-  add: (product: Product) => string
-  open: () => void
-  close: () => void
+  lastAdded: LastAdded | null
+  add: (product: Product) => void
+  remove: (id: string) => void
+  toggle: () => void
 }
 
+let nonce = 0
+
 export const useCartStore = create<CartState>((set) => ({
-  lines: [],
+  items: [],
   isOpen: false,
-  // every add is a fresh line, so each one can animate in on its own
-  add: (product) => {
-    const lineId = crypto.randomUUID()
-    set((s) => ({ lines: [...s.lines, { lineId, product }] }))
-    return lineId
-  },
-  open: () => set({ isOpen: true }),
-  close: () => set({ isOpen: false }),
+  lastAdded: null,
+  // add always opens the cart; only toggle() can close it
+  add: (product) =>
+    set((s) => {
+      const existing = s.items.find((i) => i.product.id === product.id)
+      const items = existing
+        ? s.items.map((i) => (i.product.id === product.id ? { ...i, qty: i.qty + 1 } : i))
+        : [{ product, qty: 1 }, ...s.items] // newest on top
+      return { items, isOpen: true, lastAdded: { id: product.id, nonce: ++nonce, isNew: !existing } }
+    }),
+  remove: (id) => set((s) => ({ items: s.items.filter((i) => i.product.id !== id) })),
+  toggle: () => set((s) => ({ isOpen: !s.isOpen })),
 }))
+
+export const selectCount = (s: CartState) => s.items.reduce((n, i) => n + i.qty, 0)
+export const selectTotal = (s: CartState) =>
+  s.items.reduce((n, i) => n + i.qty * i.product.price, 0)
