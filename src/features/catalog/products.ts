@@ -1,17 +1,17 @@
 export type Product = {
-    id: string
-    name: string
-    price: number
-    image: string
+  id: string
+  name: string
+  price: number
+  image: string
 }
 
 export const products: Product[] = [
-  { id: 'node-armchair', name: 'Node Armchair', price: 22428, image: '/products/1.png' },
-  { id: 'node-sofa', name: 'Node sofa', price: 32634, image: '/products/2.png' },
-  { id: 'qb-sofa', name: 'QB sofa', price: 40824, image: '/products/3.png' },
-  { id: 'sofa-arc', name: 'Sofa ARC', price: 23982, image: '/products/4.png' },
-  { id: 'sofa-b11', name: 'Sofa B11', price: 51702, image: '/products/5.png' },
-  { id: 'armchair-arc', name: 'Armchair ARC', price: 18606, image: '/products/6.png' },
+  { id: 'ola-nightstand', name: 'Ola Nightstand', price: 64500, image: '/products/1.png' },
+  { id: 'adaeze-armchair', name: 'Adaeze Armchair', price: 148000, image: '/products/2.png' },
+  { id: 'amara-floor-lamp', name: 'Amara Floor Lamp', price: 72000, image: '/products/3.png' },
+  { id: 'emeka-dining-chair', name: 'Emeka Dining Chair', price: 56800, image: '/products/4.png' },
+  { id: 'ngozi-side-table', name: 'Ngozi Side Table', price: 38500, image: '/products/5.png' },
+  { id: 'hadiza-arc-lamp', name: 'Hadiza Arc Lamp', price: 47200, image: '/products/6.png' },
 ]
 
 export const formatPrice = (n: number) => `₦${n.toLocaleString('en-NG')}`
