@@ -2,10 +2,12 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { registerCartTarget } from "./cartTarget";
-import { useCartStore } from "./cartStore";
+import { selectCount, useCartStore } from "./cartStore";
 
 export function CartButton() {
-  const count = useCartStore((s) => s.lines.length);
+  const count = useCartStore(selectCount);
+  const toggle = useCartStore((s) => s.toggle);
+  const isOpen = useCartStore((s) => s.isOpen);
   const countRef = useRef<HTMLSpanElement>(null);
   const first = useRef(true);
 
@@ -15,6 +17,7 @@ export function CartButton() {
         first.current = false;
         return;
       }
+      if (!countRef.current) return;
       gsap.fromTo(
         countRef.current,
         { yPercent: -70, opacity: 0 },
@@ -27,13 +30,30 @@ export function CartButton() {
   return (
     <button
       ref={registerCartTarget}
-      className="flex items-center gap-1 text-[11px] uppercase tracking-wide"
+      onClick={toggle}
+      aria-label="Toggle cart"
+      aria-expanded={isOpen}
+      className="pointer-events-auto relative grid h-10 w-10 place-items-center"
     >
-      Cart (
-      <span ref={countRef} className="inline-block">
-        {count}
-      </span>
-      )
+      <svg
+        viewBox="0 0 24 24"
+        className="h-6 w-6"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M5 8h14l-1 12H6L5 8Z" />
+        <path d="M9 8V7a3 3 0 0 1 6 0v1" />
+      </svg>
+      {count > 0 && (
+        <span className="absolute -right-1.5 -top-1.5 grid h-5 min-w-5 place-items-center overflow-hidden rounded-full bg-red-500 px-1 text-[10px] font-semibold text-white">
+          <span ref={countRef} className="inline-block">
+            {count}
+          </span>
+        </span>
+      )}
     </button>
   );
 }
