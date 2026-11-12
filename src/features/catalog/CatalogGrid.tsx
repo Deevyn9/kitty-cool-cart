@@ -12,13 +12,13 @@ export function CatalogGrid() {
 
   return (
     <section>
-      <h1 className="mb-6 text-lg font-semibold">
-        CATALOG{" "}
-        <span className="ml-1 text-[10px] font-normal text-neutral-500">
-          ({products.length} items)
+      <h1 className="text-center mb-6 text-[100px] font-semibold">
+        CATALOG
+        <span className="relative -top-14 text-[30px] font-semibold">
+          ({products.length})
         </span>
       </h1>
-      <div className="grid grid-cols-3 gap-x-2 gap-y-6">
+      <div className="grid grid-cols-3 gap-x-3 gap-y-3">
         {products.map((p) => (
           <ProductTile key={p.id} product={p} onAdd={handleAdd} />
         ))}
