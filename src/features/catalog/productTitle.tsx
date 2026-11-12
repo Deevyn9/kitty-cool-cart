@@ -11,7 +11,7 @@ export function ProductTile({ product, onAdd }: Props) {
 
   return (
     <div>
-      <div className="relative aspect-4/5 select-none overflow-hidden bg-[#ebebeb]">
+      <div className="relative aspect-square select-none overflow-hidden bg-[#ebebeb] group">
         {/* shadow stays on the tile when the item lifts off */}
         <div className="absolute bottom-[22%] left-1/2 h-6 w-3/5 -translate-x-1/2 rounded-full bg-black/25 blur-xl" />
         <img
@@ -20,7 +20,7 @@ export function ProductTile({ product, onAdd }: Props) {
           src={product.image}
           alt={product.name}
           draggable={false}
-          className="absolute inset-0 m-auto w-4/5 touch-none"
+          className="absolute group-hover:scale-110 transition-transform inset-0 m-auto w-2/5 touch-none"
           onClick={() => imgRef.current && onAdd(product, imgRef.current)}
         />
       </div>
