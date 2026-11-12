@@ -33,7 +33,7 @@ export function CartButton() {
       onClick={toggle}
       aria-label="Toggle cart"
       aria-expanded={isOpen}
-      className="pointer-events-auto relative grid h-10 w-10 place-items-center"
+      className="pointer-events-auto relative grid h-10 w-10 place-items-center cursor-pointer"
     >
       <svg
         viewBox="0 0 24 24"
