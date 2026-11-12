@@ -27,7 +27,7 @@ export function CartRow({ item }: { item: CartItem }) {
       data-row={product.id}
       className="flex items-center gap-4 overflow-hidden px-5 py-3"
     >
-      <div className="h-16 w-16 shrink-0 overflow-hidden rounded-xl border border-black/10 bg-[#ebebeb]">
+      <div className="h-16 w-16 shrink-0 overflow-hidden rounded-xl border border-black/10 bg-[#ebebeb] flex items-center justify-center">
         <img
           src={product.image}
           alt={product.name}
@@ -37,7 +37,7 @@ export function CartRow({ item }: { item: CartItem }) {
       </div>
       <div className="min-w-0 flex-1">
         <p className="truncate text-sm font-medium">{product.name}</p>
-        <p className="mt-1 flex items-center text-xs text-neutral-500">
+        <p className="mt-1 flex items-center text-xs text-black font-semibold">
           {formatPrice(product.price)}
           <span data-qty className="ml-3 inline-block">
             x{qty}
