@@ -18,7 +18,7 @@ export function usePriceFollow(
     const el = document.createElement('span')
     el.textContent = label
     el.className =
-      'pointer-events-none absolute left-0 top-0 z-10 select-none whitespace-nowrap text-2xl font-medium tracking-tight text-black'
+  'pointer-events-none absolute left-0 top-0 z-10 select-none whitespace-nowrap text-[40px] font-medium tracking-tight text-white mix-blend-difference'
     tile.appendChild(el)
 
     // centred on the cursor, hidden until the pointer enters
