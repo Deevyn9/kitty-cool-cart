@@ -40,7 +40,7 @@ export function CartButton() {
         className="h-8 w-8"
         fill="none"
         stroke="currentColor"
-        strokeWidth="1.8"
+        strokeWidth="1"
         strokeLinecap="round"
         strokeLinejoin="round"
       >
