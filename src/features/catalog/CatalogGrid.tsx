@@ -18,7 +18,7 @@ export function CatalogGrid() {
           ({products.length} items)
         </span>
       </h1>
-      <div className="grid grid-cols-2 gap-x-2 gap-y-6">
+      <div className="grid grid-cols-3 gap-x-2 gap-y-6">
         {products.map((p) => (
           <ProductTile key={p.id} product={p} onAdd={handleAdd} />
         ))}
