@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { formatPrice, type Product } from "./products";
-
+import { usePriceFollow } from "./usePriceFollow";
 type Props = {
   product: Product;
   onAdd: (product: Product, imgEl: HTMLImageElement) => void;
@@ -8,10 +8,15 @@ type Props = {
 
 export function ProductTile({ product, onAdd }: Props) {
   const imgRef = useRef<HTMLImageElement>(null);
+  const tileRef = useRef<HTMLDivElement>(null);
+  usePriceFollow(tileRef, formatPrice(product.price));
 
   return (
     <div>
-      <div className="relative aspect-square select-none overflow-hidden bg-[#f6f6f6] group cursor-pointer">
+      <div
+        ref={tileRef}
+        className="relative aspect-square select-none overflow-hidden bg-[#f6f6f6] group cursor-pointer"
+      >
         <img
           ref={imgRef}
           data-item
