@@ -37,7 +37,7 @@ export function CartButton() {
     >
       <svg
         viewBox="0 0 24 24"
-        className="h-6 w-6"
+        className="h-8 w-8"
         fill="none"
         stroke="currentColor"
         strokeWidth="1.8"
@@ -48,7 +48,7 @@ export function CartButton() {
         <path d="M9 8V7a3 3 0 0 1 6 0v1" />
       </svg>
       {count > 0 && (
-        <span className="absolute -right-1.5 -top-1.5 grid h-5 min-w-5 place-items-center overflow-hidden rounded-full bg-red-500 px-1 text-[10px] font-semibold text-white">
+        <span className="absolute -right-px -top-px grid h-5 min-w-5 place-items-center overflow-hidden rounded-full bg-red-500 px-1 text-[10px] font-semibold text-white">
           <span ref={countRef} className="inline-block">
             {count}
           </span>
