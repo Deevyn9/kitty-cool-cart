@@ -142,7 +142,7 @@ export function CartWidget() {
     <div className="pointer-events-none fixed right-4 top-4 z-40 w-[min(360px,calc(100vw-2rem))]">
       <div
         ref={bgRef}
-        className="absolute inset-0 rounded-2xl border border-black/5 bg-white/85 opacity-0 shadow-xl backdrop-blur-md"
+        className="absolute inset-0 rounded-lg border border-black/10 bg-white/85 opacity-0 backdrop-blur-md"
       />
 
       <div className="relative flex h-14 items-center justify-end px-4">
