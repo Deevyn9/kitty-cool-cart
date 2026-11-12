@@ -47,7 +47,7 @@ export function CartRow({ item }: { item: CartItem }) {
       <button
         onClick={handleRemove}
         aria-label={`Remove ${product.name}`}
-        className="grid h-6 w-6 place-items-center text-neutral-400 transition-colors hover:text-black"
+        className="grid h-6 cursor-pointer w-6 place-items-center text-neutral-400 transition-colors hover:text-black"
       >
         ✕
       </button>
