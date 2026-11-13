@@ -3,6 +3,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { registerCartTarget } from "./cartTarget";
 import { selectCount, useCartStore } from "./cartStore";
+import { captureGridState } from "../../shared/gridFlip";
 
 export function CartButton() {
   const count = useCartStore(selectCount);
@@ -27,13 +28,19 @@ export function CartButton() {
     { dependencies: [count] },
   );
 
+  // add above the return
+  const handleClick = () => {
+    captureGridState();
+    toggle();
+  };
+
   return (
     <button
       ref={registerCartTarget}
-      onClick={toggle}
       aria-label="Toggle cart"
       aria-expanded={isOpen}
-      className="pointer-events-auto relative grid h-10 w-10 place-items-center cursor-pointer"
+      onClick={handleClick}
+      className="fixed right-4 top-4 z-50 grid h-10 w-10 cursor-pointer place-items-center"
     >
       <svg
         viewBox="0 0 24 24"
