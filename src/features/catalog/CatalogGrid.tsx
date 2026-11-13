@@ -22,9 +22,9 @@ export function CatalogGrid() {
 
   return (
     <section>
-      <h1 data-flip className="text-center mb-6 text-[100px] font-semibold">
+      <h1 data-flip className="text-center mb-6 md:text-[100px] font-semibold">
         CATALOG
-        <span className="relative -top-14 text-[30px] font-semibold">
+        <span className="relative md:-top-14 md:text-[30px] font-semibold">
           ({products.length})
         </span>
       </h1>
