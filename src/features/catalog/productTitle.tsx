@@ -15,6 +15,7 @@ export function ProductTile({ product, onAdd }: Props) {
     <div>
       <div
         ref={tileRef}
+        data-flip
         className="relative isolate aspect-square select-none overflow-hidden bg-[#f6f6f6] group cursor-pointer"
       >
         <img
