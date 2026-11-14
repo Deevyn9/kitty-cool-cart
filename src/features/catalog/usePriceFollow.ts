@@ -13,7 +13,7 @@ export function usePriceFollow(
   useEffect(() => {
     const tile = tileRef.current
     // no hover on touch, so nothing to follow there
-    if (!tile || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return
+    if (!tile) return
 
     const el = document.createElement('span')
     el.textContent = label
