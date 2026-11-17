@@ -1,5 +1,5 @@
 import { useCartStore } from "../cart/cartStore";
-import { ProductTile } from "./ProductTitle";
+import { ProductTile } from "./ProductTile";
 import { products, type Product } from "./products";
 import { flyToCart } from "../cart/flyToCart";
 import { useLayoutEffect } from "react";
