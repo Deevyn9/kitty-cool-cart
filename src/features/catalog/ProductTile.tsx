@@ -27,7 +27,7 @@ export function ProductTile({ product, onAdd }: Props) {
           className="absolute group-hover:scale-110 transition-transform inset-0 m-auto w-2/5 touch-none"
           onClick={() => imgRef.current && onAdd(product, imgRef.current)}
         />
-        <div className="relative bottom-[-91%] left-[3%] ">
+        <div className="relative bottom-[-85%] left-[4%] md:bottom-[-91%] md:left-[3%] ">
           <p className="text-[14px] text-black font-semibold">{product.name}</p>
           <p className="text-[12px] font-semibold md:hidden">
             {formatPrice(product.price)}
