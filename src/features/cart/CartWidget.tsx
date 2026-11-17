@@ -4,6 +4,8 @@ import { useGSAP } from "@gsap/react";
 import { CartRow } from "./CartRow";
 import { CartTotal } from "./CartTotal";
 import { selectTotal, useCartStore } from "./cartStore";
+import { captureGridState } from "../../shared/gridFlip";
+import { useSheetDrag } from "./useSheetDrag";
 
 gsap.registerPlugin(useGSAP);
 
@@ -48,6 +50,15 @@ export function CartWidget() {
   const panelRef = useRef<HTMLElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
   const first = useRef(true);
+  const toggle = useCartStore((s) => s.toggle);
+  const handleRef = useRef<HTMLDivElement>(null);
+
+  useSheetDrag(panelRef, handleRef, {
+    onClose: () => {
+      captureGridState(); // same as the cart button, so the grid glides back
+      toggle();
+    },
+  });
 
   // 1) an add while the panel is open
   useGSAP(
@@ -133,7 +144,14 @@ export function CartWidget() {
       className="fixed inset-x-0 bottom-0 z-40 flex h-[45dvh] flex-col rounded-t-lg border-t border-black/10 bg-white lg:inset-x-auto lg:bottom-auto lg:right-0 lg:top-0 lg:h-dvh lg:w-95 lg:rounded-none lg:border-l lg:border-t-0"
     >
       {/* drawer handle below lg, header space for the fixed cart button on lg */}
-      <div className="mx-auto mt-2 h-1 w-10 shrink-0 rounded-full bg-black/15 lg:hidden" />
+      <div
+        ref={handleRef}
+        role="button"
+        aria-label="Close cart"
+        className="flex h-10 shrink-0 cursor-grab touch-none items-center justify-center lg:hidden"
+      >
+        <div className="h-1 w-10 rounded-full bg-black/15" />
+      </div>
       <div className="hidden h-18 shrink-0 border-b border-black/5 lg:block" />
 
       <ul ref={listRef} className="min-h-0 flex-1 overflow-y-auto">
