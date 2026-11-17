@@ -33,12 +33,14 @@ export function usePriceFollow(
     }
 
     const onEnter = (e: PointerEvent) => {
-      const { x, y } = local(e)
+       if (e.pointerType !== 'mouse') return
+  const { x, y } = local(e)
       gsap.set(el, { x, y }) // appear at the cursor, don't fly in from the corner
       gsap.to(el, { opacity: 1, scale: 1, duration: 0.25, ease: 'back.out(2)', overwrite: 'auto' })
     }
     const onMove = (e: PointerEvent) => {
-      const { x, y } = local(e)
+       if (e.pointerType !== 'mouse') return
+  const { x, y } = local(e)
       moveX(x)
       moveY(y)
     }
